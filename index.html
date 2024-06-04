@@ -59,7 +59,7 @@
             const peso = document.getElementById('peso').value;
             const altura = document.getElementById('altura').value;
 
-            if(peso!='' && altura!=''){
+            if(peso!='' && altura!='' && altura!=0){
                 const imc = peso/Math.pow(altura,2);
                 let resultado = "";
                 
