@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!--FUNCIONALIDADES PARA O FUTURO
+    - FORMATAÇÃO DA ENTRADS DE KG E METROS
+    - LEVAR MAIS DADOS EM CONSIDERAÇÃO
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/png" href="./balança.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora de IMC</title>
+</head>
+<body>
+    <main>
+        <div class="conteiner">
+            <h2>Descubra seu IMC!</h2>
+
+            <form id="formulario">
+                <div id="box-resultado">
+                    <input id="resultado" type="text" placeholder="Seu resultado aparecerá aqui!" disabled>
+                </div>
+       
+                <div id="box-dados">
+                   <input class="dados" id="peso" type="number" placeholder="Peso em quilos">
+                   <input class="dados" id="altura" type="number" placeholder="Altura em metros">
+               </div>
+       
+               <div id="box-botoes">
+                   <button id="reset" type="reset">Tentar denovo</button>
+                   <button id="calcula" type="button" onclick="calcularIMC()">Calcular</button>
+               </div>
+            </form>
+    
+        </div>
+    </main>
+
+    <p id="copyright">⭐ Direitos reservados à @GustavoAndrad ⭐</p>
+
+    <script>
+
+        document.getElementById('peso').addEventListener("keyup", ()=>{
+            if(document.getElementById('peso').value!=''){
+                document.getElementById('peso').style.caretColor = "black"
+            } else{
+                document.getElementById('peso').style.caretColor = "transparent"
+            }
+        });
+
+        document.getElementById('altura').addEventListener("keyup", ()=>{
+            if(document.getElementById('altura').value!=''){
+                document.getElementById('altura').style.caretColor = "black"
+            } else{
+                document.getElementById('altura').style.caretColor = "transparent"
+            }
+        });
+
+        function calcularIMC(){
+            const peso = document.getElementById('peso').value;
+            const altura = document.getElementById('altura').value;
+
+            if(peso!='' && altura!=''){
+                const imc = peso/Math.pow(altura,2);
+                let resultado = "";
+                
+                if(imc<16){  resultado = "Magreza Grau III"   } 
+                else if(imc<17){  resultado = "Magreza Grau II"   }
+                else if(imc<18.5){  resultado = "Magreza Grau I"   }
+                else if(imc<25){  resultado = "Adequado"   }
+                else if(imc<30){  resultado = "Obesidade Grau I"   }
+                else if(imc<35){  resultado = "Obesidade Grau I"   }
+                else{  resultado = "Obesidade Grau III"   }
+    
+                document.getElementById('resultado').style.color = "green"
+                document.getElementById('resultado').value = `Sua classificação é: ${resultado}`;
+            } else{
+                document.getElementById('resultado').style.color = "brown"
+                document.getElementById('resultado').value = `Preencha todos os campos!`;
+            }
+        }
+    </script>
+</body>
+</html>

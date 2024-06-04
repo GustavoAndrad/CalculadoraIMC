@@ -1,0 +1,151 @@
+*{
+    border: 0px;
+    padding: 0px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(28, 93, 28);
+    text-align: center;
+    margin-top: 10%;
+}
+
+body, main{
+    width: 99vw;
+    height: 97vh;
+
+    background-color: rgb(228, 239, 177);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteiner{
+    width: 30vw;
+    min-width: 400px;
+    height: 70vh;
+    border-radius: 50px;
+    box-shadow: inset 0px 0px 10px rgb(193, 213, 92);
+    background-color: antiquewhite;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: initial;
+}
+
+#formulario{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: initial;
+}
+
+#box-resultado{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80%;
+    height: 20%;
+}
+
+#resultado{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(227, 222, 222, 0.966);
+    border-radius: 20px;
+    text-align: center;
+    font-size: larger;
+}
+
+#box-dados{
+    margin-bottom: 5%;
+    width: 80%;
+    height: 20%;
+
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.dados{
+    width: 45%;
+    height: 100%;
+
+    background-color: transparent;
+    border-bottom: 1px solid black;
+
+    text-align: center;
+    font-size: larger;
+
+}
+
+.dados:hover{
+    border-bottom: 3px solid black;
+    border-radius: 3%;
+}
+
+.dados:focus{    
+    outline: none;
+    caret-color: transparent;
+    border-bottom: 3px solid chocolate;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#box-botoes{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80%;
+    height: 20%;
+
+    gap:10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+button{
+    width: 45%;
+    height: 80%;
+    font-size: large;
+    border-radius: 20px;
+}
+
+button:hover{
+    box-shadow: 0px 0px 3px black;
+}
+
+#reset{
+    background-color: brown;
+    color: antiquewhite;
+}
+
+#calcula{
+    background-color: rgb(28, 93, 28);
+    color: antiquewhite;
+}
+
+#copyright{
+    font-size: 0.8em;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(0, 0, 0);
+    
+    margin-bottom: 2%;
+    min-width: 350px;
+
+    text-align: center;
+}
