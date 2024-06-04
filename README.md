@@ -1,3 +1,4 @@
 # Calculadora de IMC
 
-Tecnoloias: Web Vanilla (HTML5, CSS, JS)
+Tecnologias: Web Vanilla (HTML5, CSS, JS)
+Availiable at: https://gustavoandrad.github.io/CalculadoraIMC/
