@@ -17,18 +17,21 @@
             <h2>Descubra seu IMC!</h2>
 
             <form id="formulario">
-                <div id="box-resultado">
-                    <input id="resultado" type="text" placeholder="Seu resultado aparecerá aqui!" disabled>
+                <div id="result-ajuda">
+                    <div id="box-resultado">
+                        <input id="resultado" type="text" placeholder="Seu resultado aparecerá aqui!" disabled>
+                    </div>
+                    <button type="button" id="ajuda" onclick="detalhesIMC()" disabled title="Preencha os campos para ver seu resultado">?</button>
                 </div>
        
                 <div id="box-dados">
-                   <input class="dados" id="peso" type="number" placeholder="Peso em quilos">
-                   <input class="dados" id="altura" type="number" placeholder="Altura em metros">
+                   <input class="dados" id="peso" type="number" placeholder="Peso em Kg">
+                   <input class="dados" id="altura" type="number" placeholder="Altura em M">
                </div>
        
                <div id="box-botoes">
-                   <button id="reset" type="reset">Tentar denovo</button>
-                   <button id="calcula" type="button" onclick="calcularIMC()">Calcular</button>
+                   <button class="botao-envio" id="reset" type="reset" onclick="resetarIMC()">Tentar denovo</button>
+                   <button class="botao-envio" id="calcula" type="button" onclick="calcularIMC()">Calcular</button>
                </div>
             </form>
     
@@ -39,6 +42,7 @@
 
     <script>
 
+        
         document.getElementById('peso').addEventListener("keyup", ()=>{
             if(document.getElementById('peso').value!=''){
                 document.getElementById('peso').style.caretColor = "black"
@@ -54,30 +58,63 @@
                 document.getElementById('altura').style.caretColor = "transparent"
             }
         });
-
+        
+        let imc = null;
         function calcularIMC(){
             const peso = document.getElementById('peso').value;
             const altura = document.getElementById('altura').value;
 
             if(peso!='' && altura!='' && altura!=0){
-                const imc = peso/Math.pow(altura,2);
+                imc = (peso/Math.pow(altura,2)).toFixed(1);
                 let resultado = "";
                 
-                if(imc<16){  resultado = "Magreza Grau III"   } 
-                else if(imc<17){  resultado = "Magreza Grau II"   }
-                else if(imc<18.5){  resultado = "Magreza Grau I"   }
-                else if(imc<25){  resultado = "Adequado"   }
-                else if(imc<30){  resultado = "Obesidade Grau I"   }
-                else if(imc<35){  resultado = "Obesidade Grau I"   }
-                else{  resultado = "Obesidade Grau III"   }
+                if(imc<16){  
+                    resultado = "Magreza Grau III"  
+                    document.getElementById('resultado').style.color = "blue" 
+                } 
+                else if(imc<17){  
+                    resultado = "Magreza Grau II"   
+                    document.getElementById('resultado').style.color = "blue"
+                }
+                else if(imc<18.5){  
+                    resultado = "Magreza Grau I"   
+                    document.getElementById('resultado').style.color = "blue"
+                }
+                else if(imc<25){  
+                    resultado = "Adequado"  
+                    document.getElementById('resultado').style.color = "green" 
+                }
+                else if(imc<30){  
+                    resultado = "Obesidade Grau I"  
+                    document.getElementById('resultado').style.color = "brown" 
+                }
+                else if(imc<35){  
+                    resultado = "Obesidade Grau I" 
+                    document.getElementById('resultado').style.color = "brown"  
+                }
+                else{  
+                    resultado = "Obesidade Grau III"   
+                    document.getElementById('resultado').style.color = "brown"
+                }
     
-                document.getElementById('resultado').style.color = "green"
                 document.getElementById('resultado').value = `Sua classificação é: ${resultado}`;
+
+                document.getElementById("ajuda").disabled = false;
             } else{
                 document.getElementById('resultado').style.color = "brown"
                 document.getElementById('resultado').value = `Preencha todos os campos!`;
             }
         }
+
+        function resetarIMC(){
+            imc = 0;
+            document.getElementById("ajuda").disabled = true;
+        }
+
+        function detalhesIMC(){
+            alert(`Seu IMC é: ${imc}.\nEsse resultado é obtido por peso/altura^2`);
+        }
+
     </script>
 </body>
 </html>
